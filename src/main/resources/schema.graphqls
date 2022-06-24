@@ -1,0 +1,34 @@
+# Наименование root запроса по умолчанию
+type Query {
+    userNotes(userId: ID): [Note]
+}
+
+# field name == json response in NoteService
+type Note {
+    id: ID,
+    prev_note_version_id: Int,
+    guid: String,
+    version: String,
+    title: String,
+    text: String,
+    user: User,
+    create_date: String,
+    deleted: String,
+    archive: String,
+    actual: String,
+    note_files: [NoteFile]
+}
+
+# field name == json response in NoteService
+type User {
+    id: ID
+}
+
+# field name == json response in NoteService
+type NoteFile {
+    id: ID,
+    note_id: Int,
+    guid: String,
+    data: String,
+    filename: String
+}

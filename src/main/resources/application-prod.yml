@@ -1,0 +1,10 @@
+api:
+  external:
+    users:
+      base-url: http://users-app:8082
+    notes:
+      base-url: http://todo-app:8222
+
+logging:
+  file:
+    name: "/var/log/todo-graphql-service/todo-graphql-service.log"

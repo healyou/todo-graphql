@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: todo-app-gateway-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+logging:
+  level:
+    root: INFO
+    ru:
+      lappi:
+        todographql: DEBUG
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+  file:
+    name: "${user.dir}/log/todo-graphql-service.log"
+server:
+  port: 8333
+api:
+  access-token-header-code: X-Access-Token
+  # Внешнее по отношению к todographql service
+  external:
+    users:
+      base-url: http://localhost:8082
+      path:
+        base: /users-api
+        register: ${api.external.users.path.base}/users/register
+    notes:
+      base-url: http://localhost:8222
+      path:
+        base: /notes-api
