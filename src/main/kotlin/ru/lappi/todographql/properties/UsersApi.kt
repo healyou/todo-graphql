@@ -8,6 +8,6 @@ class UsersApi {
 
     class UsersPath {
         var base: @NotNull String? = null
-        var register: @NotNull String? = null
+        var userData: @NotNull String? = null
     }
 }

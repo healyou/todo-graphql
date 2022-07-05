@@ -21,7 +21,7 @@ type Note {
 
 # field name == json response in NoteService
 type User {
-    id: ID
+    user_id: ID
 }
 
 # field name == json response in NoteService

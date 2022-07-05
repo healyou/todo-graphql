@@ -11,7 +11,7 @@ import graphql.schema.idl.TypeRuntimeWiring
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import ru.lappi.todographql.graphql.datafetcher.UserDataFetcher
+import ru.lappi.todographql.graphql.datafetcher.NoteUserDataFetcher
 import ru.lappi.todographql.graphql.datafetcher.UserNotesDataFetcher
 import java.io.IOException
 
@@ -20,7 +20,7 @@ class GraphQlConfiguration {
     @Autowired
     var userNotesDataFetcher: UserNotesDataFetcher? = null
     @Autowired
-    var userDataFetcher: UserDataFetcher? = null
+    var noteUserDataFetcher: NoteUserDataFetcher? = null
 
     @Bean
     @Throws(IOException::class)
@@ -38,19 +38,19 @@ class GraphQlConfiguration {
 
     private fun buildWiring(): RuntimeWiring {
         return RuntimeWiring.newRuntimeWiring()
-            .type(createTodoQueryTypeWiring())
+            .type(createQueryTypeWiring())
             .type(createNoteTypeWiring())
             .build()
     }
 
-    private fun createTodoQueryTypeWiring(): TypeRuntimeWiring.Builder {
-        return TypeRuntimeWiring.newTypeWiring("TodoQuery")
+    private fun createQueryTypeWiring(): TypeRuntimeWiring.Builder {
+        return TypeRuntimeWiring.newTypeWiring("Query")
             .dataFetcher("userNotes", userNotesDataFetcher)
     }
 
     private fun createNoteTypeWiring(): TypeRuntimeWiring.Builder {
         return TypeRuntimeWiring.newTypeWiring("Note")
-            .dataFetcher("user", userDataFetcher)
+            .dataFetcher("user", noteUserDataFetcher)
     }
 
     @Throws(IOException::class)

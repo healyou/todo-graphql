@@ -11,4 +11,10 @@ import javax.validation.constraints.NotNull
 class ApiProperties {
     var accessTokenHeaderCode: @NotNull String? = null
     var external: @NotNull External? = null
+
+    val getUserDataUrl: String
+        get() = this.external!!.users!!.baseUrl + this.external!!.users!!.path!!.userData
+
+    val getUserNotesUrl: String
+        get() = this.external!!.notes!!.baseUrl + this.external!!.notes!!.path!!.userNotes
 }

@@ -8,5 +8,6 @@ class NotesApi {
 
     class NotesPath {
         var base: @NotNull String? = null
+        var userNotes: @NotNull String? = null
     }
 }

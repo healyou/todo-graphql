@@ -1,0 +1,6 @@
+api:
+  external:
+    users:
+      base-url: http://localhost:8082
+    notes:
+      base-url: http://localhost:8222

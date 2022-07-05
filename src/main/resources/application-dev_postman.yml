@@ -1,0 +1,6 @@
+api:
+  external:
+    users:
+      base-url: https://4346340c-b680-413b-b41d-2680ef445b26.mock.pstmn.io
+    notes:
+      base-url: https://4346340c-b680-413b-b41d-2680ef445b26.mock.pstmn.io

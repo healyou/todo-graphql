@@ -20,6 +20,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.apache.httpcomponents:httpclient")
 	implementation("com.graphql-java:graphql-java")
 	implementation("com.graphql-java:graphql-java-spring-boot-starter-webmvc:2.0")
 	implementation("com.google.guava:guava:31.1-jre")

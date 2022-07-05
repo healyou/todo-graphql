@@ -27,8 +27,9 @@ api:
       base-url: http://localhost:8082
       path:
         base: /users-api
-        register: ${api.external.users.path.base}/users/register
+        user-data: ${api.external.users.path.base}/users/getUserData
     notes:
       base-url: http://localhost:8222
       path:
         base: /notes-api
+        user-notes: ${api.external.notes.path.base}/notes/getUserNotes
