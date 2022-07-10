@@ -13,8 +13,12 @@ class ApiProperties {
     var external: @NotNull External? = null
 
     val getUserDataUrl: String
-        get() = this.external!!.users!!.baseUrl + this.external!!.users!!.path!!.userData
+        get() = this.external!!.users!!.baseUrl + this.getUserDataPath
+    val getUserDataPath: String
+        get() = this.external!!.users!!.path!!.userData!!
 
     val getUserNotesUrl: String
-        get() = this.external!!.notes!!.baseUrl + this.external!!.notes!!.path!!.userNotes
+        get() = this.external!!.notes!!.baseUrl + this.getUserNotesPath
+    val getUserNotesPath: String
+        get() = this.external!!.notes!!.path!!.userNotes!!
 }
