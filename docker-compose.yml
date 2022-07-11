@@ -1,0 +1,22 @@
+version: '3.2'
+
+services:
+  todo-graphql-app:
+    image: todo-graphql-app:v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    pull_policy: build
+    container_name: todo-graphql-app
+    ports:
+      - "8333:8333"
+    environment:
+      - spring.profiles.active=prod
+    volumes:
+      - ./log:/var/log/todo-graphql-service
+    healthcheck:
+      test: "curl --fail --silent localhost:8333/actuator/health | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
