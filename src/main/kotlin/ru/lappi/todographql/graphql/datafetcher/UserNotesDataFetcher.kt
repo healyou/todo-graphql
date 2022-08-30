@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component
 import ru.lappi.todographql.entity.NoteJsonDTO
 import ru.lappi.todographql.properties.ApiProperties
 import ru.lappi.todographql.service.NotesService
+import java.util.*
 
 @Component
 class UserNotesDataFetcher @Autowired constructor(
@@ -30,11 +31,15 @@ class UserNotesDataFetcher @Autowired constructor(
         val token = context.get<String>(accessTokenHeaderCode)
 
         val notesJson = notesService.getNotesJsonByUserId(userId, token)
-        val mapper = ObjectMapper()
 
-        return mapper.readValue(
-            notesJson!!,
-            object : TypeReference<List<NoteJsonDTO>>() {}
-        )
+        return if (notesJson != null && notesJson == "null") {
+            Collections.emptyList()
+        } else {
+            val mapper = ObjectMapper()
+            mapper.readValue(
+                notesJson!!,
+                object : TypeReference<List<NoteJsonDTO>>() {}
+            )
+        }
     }
 }
